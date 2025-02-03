@@ -4,16 +4,16 @@
 
 # Site
 title: QQ
-subtitle: ''
-description: ''
+subtitle: QQ's blog
+description: a rabbit majoring in Mathematics and Computer Science
 keywords:
-author: John Doe
+author: Chen Quan
 language: en
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://www.qqworld-tutu.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
