@@ -58,3 +58,40 @@ cover:
       url: tags/
 
 ############################### Cover ############################### > end
+
+
+
+site_footer:
+  # layout of footer: [aplayer, social, license, info, copyright]
+  layout: [aplayer, social, license, info, copyright]
+  social:
+    - icon: fas fa-rss
+      url: atom.xml
+    - icon: fas fa-envelope
+      url: chenquan@stu.pku.edu.cn
+    - icon: fab fa-github
+      url: www.github.com/qqworld-tutu
+  copyright: '[Copyright © 2025-2025 #版权](/)'
+  # You can add your own property here. (Support markdown, for example: br: '<br>')
+  br: '<br>'
+
+
+comments:
+  service: giscus
+  # giscus
+  # https://giscus.app
+  # https://github.com/laymonage/giscus
+  giscus:
+    # 以下配置按照 yml 格式增删填写即可
+    repo: qqworld-tutu/comments
+    repo-id: R_kgDONzjExA
+    category: Announcements
+    category-id: DIC_kwDONzjExM4CmnBa
+    mapping: "pathname"
+    reactions-enabled: "1"
+    emit-metadata: "0"
+    lang: "zh-CN"
+    # 以上配置按照 yml 格式增删填写即可
+    theme:
+      light: "light" # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
+      dark: "dark" # https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
