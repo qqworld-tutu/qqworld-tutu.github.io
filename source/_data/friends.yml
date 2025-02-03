@@ -1,0 +1,15 @@
+- group: Friends  # 分组标题
+  description:  eee # 分组描述
+  items:
+    - title: zyc # 名称
+      avatar: https://zzzyc001.github.io/img/live_image_crop.jpg # 头像
+      url: https://zzzyc001.github.io/about.html # 链接
+      screenshot: https://zzzyc001.github.io/img/live_image_crop.jpg # 截图
+      keywords: zyc # 关键词
+      description: sds # 描述
+    - title: YangTY # 名称
+      avatar: "https://blog.imyangty.com/assets/avatar.jpg" # 头像
+      url: "https://blog.imyangty.com/" # 链接
+      screenshot: https://zzzyc001.github.io/img/live_image_crop.jpg # 截图
+      keywords: "越过山川" # 关键词
+      description: "越过山川"

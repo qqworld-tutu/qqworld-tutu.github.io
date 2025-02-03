@@ -1,0 +1,5 @@
+---
+title: friends
+date: 2025-02-03 15:59:56
+tags:
+---
