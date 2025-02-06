@@ -15,7 +15,7 @@ tags:
 
 本项目使用的爬虫代码和ui代码（本人不会，虽求助kimi）已全部放在此repo中。但鉴于本人初学爬虫不久，所以使用的方法比较简陋，免去了写iaaa login，直接选择手动登录。
 
-{% link PKU盒武器 :: https://github.com/qqworld-tutu/PKU-Nuclear-Weapon :: https://www.chenquan--tutu.top/images/avatar.jpg %}
+{% link PKU盒武器 :: https://github.com/qqworld-tutu/PKU-Nuclear-Weapon :: https://www.chenquan-tutu.top/images/avatar.jpg %}
 
 {% note warning::由于本项目有一定隐私泄露风险，所以爬虫得到的csv文件并没有放上来。如果你是pku学生，并且也想要的话可私聊联系我。（wechat：dj7152） %}
 
