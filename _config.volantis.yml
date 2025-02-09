@@ -223,8 +223,14 @@ sidebar:
       url: /about/
       title:
       subtitle:
-      jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
-      social: true
+      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      social:
+        - icon: fas fa-rss
+          url: https://www.chenquan-tutu.top/
+        - icon: fas fa-envelope
+          url: mailto:chenquan@stu.pku.edu.cn
+        - icon: fab fa-github
+          url: https://www.github.com/qqworld-tutu
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
