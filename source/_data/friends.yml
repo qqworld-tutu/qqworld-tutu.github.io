@@ -1,15 +1,71 @@
 - group: Friends  # 分组标题
-  description:  eee # 分组描述
+  # description:  eee # 分组描述
   items:
-    - title: zyc # 名称
-      avatar: https://zzzyc001.github.io/img/live_image_crop.jpg # 头像
+    - title: xmz # 名称
+      avatar: https://avatars.githubusercontent.com/u/197620394?v=4 # 头像
+      url: https://github.com/Xmzzzzzzzzz # 链接
+      screenshot: 
+      keywords: 
+      description: "小米粥<br>1" 
+    - title: 「eightysix」 # 名称
+      avatar: /images/lc.jpg # 头像
       url: https://zzzyc001.github.io/about.html # 链接
-      screenshot: https://zzzyc001.github.io/img/live_image_crop.jpg # 截图
-      keywords: zyc # 关键词
-      description: sds # 描述
-    - title: YangTY # 名称
-      avatar: "https://blog.imyangty.com/assets/avatar.jpg" # 头像
-      url: "https://blog.imyangty.com/" # 链接
-      screenshot: https://zzzyc001.github.io/img/live_image_crop.jpg # 截图
-      keywords: "越过山川" # 关键词
+      screenshot: 
+      keywords: 
+      description: 执政官N 
+    - title: 猫王归来提督 
+      avatar: /images/jxy.jpg 
+      url: https://github.com/catking01 
+      screenshot: 
+      keywords:  
+      description: " "
+    - title: Zeming Wei
+      avatar: "https://weizeming.github.io/images/android-chrome-512x512.png"
+      url: "https://weizeming.github.io/"
+      screenshot: 
+      keywords: 
+      description: Academic Rising Star on the trustworthiness of AI
+    - title: zyc 
+      avatar: https://zzzyc001.github.io/img/live_image_crop.jpg 
+      url: https://zzzyc001.github.io/about.html 
+      screenshot: 
+      keywords: 
+      description: "ZZzyc"
+    - title: JingXu's Site
+      avatar: "https://iculizhi.github.io/images/xj.png"
+      url: "https://iculizhi.github.io/"
+      screenshot: 
+      keywords: 
+      description: p大22级图灵班&经双鼠鼠，爱好中国哲学
+    - title: YangTY
+      avatar: "https://blog.imyangty.com/assets/avatar.jpg"
+      url: "https://blog.imyangty.com/"
+      screenshot: 
+      keywords: 
       description: "越过山川"
+    - title: Achyutace
+      avatar: "/images/qlc.jpg"
+      url: "https://github.com/Achyutace/"
+      screenshot: 
+      keywords: 
+      description: 一个喜欢下次一定的学生
+    - title: Ethan
+      avatar: "https://hanlife02.com.cn/_next/image?url=https%3A%2F%2Fhanlife02.com.cn%2Fapi%2Fv2%2Fobjects%2Favatar%2Fevcvs61h0ajgvoai07.jpeg&w=384&q=75"
+      url: "https://hanlife02.com.cn/"
+      screenshot: 
+      keywords: 
+      description: Don’t stay awake for too long.
+    - title: Arthals' ink
+      avatar: "https://arthals.ink/_astro/avatar.gqcowz7O_4rCNY.webp"
+      url: "https://arthals.ink/"
+      screenshot: 
+      keywords: 
+      description: 所见高山远木，阔云流风；所幸岁月盈余，了无拘束。
+    - title: C+V
+      avatar: "https://www.helloimg.com/i/2024/09/25/66f355782f700.jpg"
+      url: "https://pku-cs-cjw.top/"
+      screenshot: 
+      keywords: 
+      description: 万物可爱，你也不例外
+
+

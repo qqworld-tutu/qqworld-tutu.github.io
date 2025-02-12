@@ -118,7 +118,7 @@ article:
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter]
+    top_meta: [author, category, date, counter, wordcount]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -164,7 +164,7 @@ article:
     meta_library:
       # 默认文章作者（可在 front-matter 中覆盖）
       author:
-        avatar:
+        avatar: /images/avatar.jpg
         name: QQ
         url: /
       # 文章创建日期
@@ -218,7 +218,7 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop] # [desktop, mobile]
-      avatar: https://www.chenquan-tutu.top/images/avatar.jpg
+      avatar: /images/avatar.jpg
       shape: circle # circle, rectangle
       url: /about/
       title:
@@ -311,3 +311,12 @@ sidebar:
           friendlyShow: true    # 更友好的时间显示
           text: '最后活动时间：'
           unit: '日'
+
+plugins:
+  search:
+    enable: true
+    service: hexo  # hexo
+    js: https://cdn.jsdelivr.net/xxxxxxxx/js/search/hexo.js
+  wordcount:
+    enable: true
+
