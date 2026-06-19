@@ -56,11 +56,11 @@
       keywords: 
       description: 一个喜欢下次一定的学生
     - title: Ethan
-      avatar: "https://hanlife02.com.cn/_next/image?url=https%3A%2F%2Fhanlife02.com.cn%2Fapi%2Fv2%2Fobjects%2Favatar%2Fevcvs61h0ajgvoai07.jpeg&w=384&q=75"
-      url: "https://hanlife02.com.cn/"
+      avatar: "https://hanlife02.com/avatar.svg"
+      url: "https://hanlife02.com/"
       screenshot: 
       keywords: 
-      description: Don’t stay awake for too long.
+      description: "Don't stay awake for too long"
     - title: Arthals' ink
       avatar: "https://arthals.ink/_astro/avatar.gqcowz7O_4rCNY.webp"
       url: "https://arthals.ink/"
@@ -73,5 +73,4 @@
       screenshot: 
       keywords: 
       description: 万物可爱，你也不例外
-
 
