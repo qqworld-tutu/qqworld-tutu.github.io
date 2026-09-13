@@ -6,6 +6,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
+    "new": "hexo new post",
+    "publish": "node tools/publish.mjs",
     "server": "hexo server"
   },
   "hexo": {

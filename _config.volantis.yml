@@ -7,6 +7,9 @@ navbar:
     icon:
     title:
   menu:
+    - name: 学术主页
+      icon: fa-solid fa-graduation-cap
+      url: https://www.chenquan-tutu.top/
     - name: 博客
       icon: fa-solid fa-rss
       url: /
@@ -50,9 +53,12 @@ cover:
   subtitle: QQ's blog
   search: 搜一下 # search bar placeholder 搜索栏里面显示的东西
   features:
-    - name: 主页
+    - name: 博客
       icon: #
       url: /
+    - name: 学术主页
+      icon: #
+      url: https://www.chenquan-tutu.top/
     - name: 标签
       icon: #
       url: tags/
@@ -66,7 +72,7 @@ site_footer:
   layout: [aplayer, social, license, info, copyright]
   social:
     - icon: fas fa-rss
-      url: https://www.chenquan-tutu.top/
+      url: https://blog.chenquan-tutu.top/
     - icon: fas fa-envelope
       url: mailto:chenquan@stu.pku.edu.cn
     - icon: fab fa-github
@@ -226,7 +232,7 @@ sidebar:
       jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
         - icon: fas fa-rss
-          url: https://www.chenquan-tutu.top/
+          url: https://blog.chenquan-tutu.top/
         - icon: fas fa-envelope
           url: mailto:chenquan@stu.pku.edu.cn
         - icon: fab fa-github
@@ -319,4 +325,3 @@ plugins:
     js: https://cdn.jsdelivr.net/xxxxxxxx/js/search/hexo.js
   wordcount:
     enable: true
-

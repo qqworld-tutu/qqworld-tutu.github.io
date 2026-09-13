@@ -22,7 +22,7 @@ https://github.com/Charliecwei/PKU_Venues_Auto_Book
 2. 智慧场馆网站也新写了，许多爬虫代码也随之修改
 3. 提交预约时的验证方式改成了文字点击，于是使用了超级鹰的api来识别
 
-{% link PKU AutoBookingVenues -fixed by cq-tutu :: https://github.com/qqworld-tutu/PKUautoBookingVenues-fixed-by-cq-tutu :: https://www.chenquan-tutu.top/images/avatar.jpg %}
+{% link PKU AutoBookingVenues -fixed by cq-tutu :: https://github.com/qqworld-tutu/PKUautoBookingVenues-fixed-by-cq-tutu :: /images/avatar.jpg %}
 
 {% note warning::本项目还在初期阶段，各方面都不甚完善，如有任何意见或建议，欢迎联系我。（wechat：dj7152，email：chenquan@stu.pku.edu.cn） %}
 
