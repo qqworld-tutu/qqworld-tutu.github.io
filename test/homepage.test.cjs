@@ -1,6 +1,17 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const render = require('../lib/homepage.cjs');
+const {renderProfile, profile} = require('../lib/profile.cjs');
+test('homepage uses the shared affiliation and accessible contact links',()=>{
+  const html=render({...options,posts:[]});
+  assert(html.includes(renderProfile()));
+  assert(html.includes('北京大学 · 数学科学学院'));
+  assert(html.includes('&amp; 计算机科学与技术双学位'));
+  assert.deepEqual(profile.contacts.map(x=>x.label),['GitHub','邮箱','学术主页']);
+  assert.equal((renderProfile().match(/<svg /g)||[]).length,3);
+  assert(!renderProfile().includes('关于我'));
+  assert(!renderProfile().includes('fa-rss'));
+});
 const options = {base:'https://blog.chenquan-tutu.top/',cssVersion:'css123',jsVersion:'js123',categoryRoutes:{新增分类:'https://blog.chenquan-tutu.top/categories/new/'},tagRoutes:{新标签:'https://blog.chenquan-tutu.top/tags/new/'}};
 test('navigation works with Hexo-normalized URLs, with or without a trailing slash',()=>{
   for(const base of ['https://blog.chenquan-tutu.top','https://blog.chenquan-tutu.top/']){

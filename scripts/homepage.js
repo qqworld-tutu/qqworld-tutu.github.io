@@ -3,6 +3,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {createHash} = require('node:crypto');
 const renderHomepage = require('../lib/homepage.cjs');
+const {renderProfile} = require('../lib/profile.cjs');
+
+// Keep the homepage and theme sidebar on the same markup and contact data.
+hexo.extend.filter.register('before_generate', function () {
+  this.theme.setView('_widget/blogger.ejs', fs.readFileSync(path.join(this.source_dir, '_volantis/blogger.ejs'), 'utf8'));
+});
+hexo.extend.helper.register('qq_profile', renderProfile);
 
 // Replace only Hexo's homepage generator. Volantis still renders posts and archives.
 hexo.extend.filter.register('after_init', function () {
@@ -19,7 +26,7 @@ hexo.extend.filter.register('after_init', function () {
     }));
     const routes = model => Object.fromEntries(model.toArray().map(item => [item.name, new URL(item.path, this.config.url).href]));
     const revision = file => createHash('sha256').update(fs.readFileSync(path.join(this.source_dir, file))).digest('hex').slice(0, 12);
-    return {path: 'index.html', data: renderHomepage({posts, base: this.config.url, categoryRoutes: routes(locals.categories), tagRoutes: routes(locals.tags), cssVersion: revision('css/homepage.css'), jsVersion: revision('js/homepage.js')})};
+    return {path: 'index.html', data: renderHomepage({posts, base: this.config.url, categoryRoutes: routes(locals.categories), tagRoutes: routes(locals.tags), profileVersion: revision('css/profile.css'), cssVersion: revision('css/homepage.css'), jsVersion: revision('js/homepage.js')})};
   });
 });
 

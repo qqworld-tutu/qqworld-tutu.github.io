@@ -71,12 +71,12 @@ site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
   layout: [social, copyright]
   social:
-    - icon: fas fa-rss
-      url: https://blog.chenquan-tutu.top/
+    - icon: fab fa-github
+      url: https://github.com/qqworld-tutu
     - icon: fas fa-envelope
       url: mailto:chenquan@stu.pku.edu.cn
-    - icon: fab fa-github
-      url: https://www.github.com/qqworld-tutu
+    - icon: fas fa-graduation-cap
+      url: https://www.chenquan-tutu.top/
   copyright: '© 2025–2026 Chen Quan · [学术主页](https://www.chenquan-tutu.top/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
@@ -228,15 +228,10 @@ sidebar:
       shape: circle # circle, rectangle
       url: /about/
       title: QQ
-      subtitle: 北京大学 · 数学与计算机
+      subtitle: 北京大学 · 数学科学学院 & 计算机科学与技术双学位
       jinrishici: false
-      social:
-        - icon: fas fa-rss
-          url: https://blog.chenquan-tutu.top/
-        - icon: fas fa-envelope
-          url: mailto:chenquan@stu.pku.edu.cn
-        - icon: fab fa-github
-          url: https://www.github.com/qqworld-tutu
+      # Profile links are shared with the homepage via source/_data/profile.json.
+      social: []
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:

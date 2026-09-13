@@ -1,0 +1,11 @@
+{
+  "name": "QQ",
+  "avatar": "/images/avatar.jpg",
+  "about": "/about/",
+  "affiliation": "北京大学 · 数学科学学院 & 计算机科学与技术双学位",
+  "contacts": [
+    { "label": "GitHub", "icon": "github", "url": "https://github.com/qqworld-tutu" },
+    { "label": "邮箱", "icon": "mail", "url": "mailto:chenquan@stu.pku.edu.cn" },
+    { "label": "学术主页", "icon": "academic", "url": "https://www.chenquan-tutu.top/" }
+  ]
+}

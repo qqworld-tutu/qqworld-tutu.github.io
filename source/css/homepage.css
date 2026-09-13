@@ -9,3 +9,9 @@
 @media(max-width:620px){.hero{height:79svh;min-height:560px}.cover{position:absolute;height:79svh;min-height:560px;object-position:65% center;transform:none}.cover-name{top:20%;left:8%;transform:none}.cover-name h1{font-size:43px}.scroll-down{bottom:22px;width:38px;height:38px;left:calc(50% - 19px)}.reading{padding:30px 24px 0;border-radius:12px 12px 0 0}.columns{display:block}.feed-header{padding-bottom:15px}.feed-header h2{font-size:17px}.post{padding:24px 0 25px}.post h3{font-size:21px}.post>p{font-size:14px;line-height:1.9;margin-top:12px}.post-meta{font-size:11px}.post-bottom{font-size:11px;margin-top:14px}.sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:35px}.sidebar .author{display:none}.sidebar section+section{margin-top:0}.sidebar .archive-link{margin-top:0;grid-column:1/-1}.sidebar h2{font-size:13px;margin-bottom:10px}footer{margin-top:25px;font-size:10px;gap:15px;padding-bottom:64px}.preview-note{right:10px;bottom:9px;gap:12px;font-size:9px}.category-filter select{max-width:150px}.brand{font-size:18px}}
 @media(max-width:360px){.header{padding:0 17px}.brand{font-size:17px}.reading{padding-left:19px;padding-right:19px}.cover-name h1{font-size:39px}.post h3{font-size:20px}.post-bottom{gap:10px}.post-tags{gap:9px}.sidebar{gap:20px}.category-filter select{max-width:130px}}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.cover,.cover-name{transform:none!important;opacity:1!important}}
+
+/* A soft, open wordmark that belongs with the picnic illustration. */
+.brand, .cover-name h1 { font-family: 'Avenir Next', 'Trebuchet MS', sans-serif; font-weight: 500; letter-spacing: .005em; }
+.brand { font-size: 19px; }
+.cover-name h1 { font-size: clamp(38px, 3.35vw, 48px); line-height: 1.3; color: #3e4a37; }
+@media(max-width:620px) { .brand { font-size: 18px; } .cover-name h1 { font-size: 38px; } }

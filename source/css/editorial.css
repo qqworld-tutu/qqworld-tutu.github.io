@@ -44,6 +44,7 @@ body { background: var(--journal-paper); color: var(--journal-ink); font-family:
 #l_header { box-shadow: none; border-bottom: 1px solid var(--journal-line); background: var(--journal-paper); border-radius: 0; }
 #l_header .container { max-width: 1100px; }
 #l_header .title { font: normal 23px/1.2 var(--journal-serif); color: var(--journal-ink); letter-spacing: -.04em; }
+#l_header .title { font: 500 19px/1.3 'Avenir Next', 'Trebuchet MS', sans-serif; letter-spacing: .005em; }
 #l_header .menuitem { font-size: 12px; font-weight: 400; color: var(--journal-muted); }
 #l_header .menuitem i { display: none; }
 #l_header .menuitem:hover { color: var(--journal-accent); background: transparent; }

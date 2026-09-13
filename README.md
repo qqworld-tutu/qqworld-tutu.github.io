@@ -39,6 +39,8 @@ GitHub 仓库的 Pages 发布来源设置为 GitHub Actions，自定义域名为
 
 首页从 Hexo 内容模型生成文章列表、分类和标签，超过 8 篇自动显示客户端分页；搜索涵盖全部已发布文章的标题、摘要、分类和标签。归档页面保留 Hexo 原生分页。导航、侧栏和其他页面色彩配置在 `_config.volantis.yml`。页面间使用正常跳转，避免不同布局之间的 PJAX 冲突。正文、数学公式、评论和原有文章地址保留。
 
+个人资料与联系方式统一保存在 `source/_data/profile.json`。首页和内页侧栏共同使用它，修改院系、邮箱或链接后重新构建即可；共享样式在 `source/css/profile.css`。站名使用本机的 Avenir Next / Trebuchet MS 字体，不额外下载网络字体。
+
 ## 修改首页摘要
 
 在文章 Markdown 顶部的 front matter 里填写 `description`，例如：
