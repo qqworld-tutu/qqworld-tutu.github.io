@@ -3,9 +3,9 @@
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: volantis-static/media/org.volantis/blog/Logo-NavBar@3x.png # https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img:
     icon:
-    title:
+    title: QQ’s blog
   menu:
     - name: 学术主页
       icon: fa-solid fa-graduation-cap
@@ -28,7 +28,7 @@ navbar:
     - name: 关于
       icon: fa-solid fa-info-circle
       url: about/
-  search: Search...   # Search bar placeholder
+  search: 搜索文章
 ############################### Navigation Bar ############################### > end
 
 
@@ -44,8 +44,8 @@ cover:
   layout_scheme: search # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)，个人感觉搜索更简洁
   display:
     home: true
-    archive: true
-    others: true # can be written in front-matter 'cover: true'
+    archive: false
+    others: false # can be written in front-matter 'cover: true'
   # background: #封面背景，需要上传url
   background: /images/cover.jpg
   logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
@@ -69,7 +69,7 @@ cover:
 
 site_footer:
   # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, info, copyright]
+  layout: [social, copyright]
   social:
     - icon: fas fa-rss
       url: https://blog.chenquan-tutu.top/
@@ -77,7 +77,7 @@ site_footer:
       url: mailto:chenquan@stu.pku.edu.cn
     - icon: fab fa-github
       url: https://www.github.com/qqworld-tutu
-  copyright: '[Copyright © 2025-2025 #版权](/)'
+  copyright: '© 2025–2026 Chen Quan · [学术主页](https://www.chenquan-tutu.top/)'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 
@@ -117,14 +117,14 @@ article:
     # auto generate excerpt if not exist
     auto_excerpt: true # false, true
     # show split line or not
-    line_style: solid # hidden, solid, dashed, dotted
+    line_style: hidden
     # show readmore button
     readmore: auto # auto, always
   # 文章详情页面的文章卡片本体布局方案
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter, wordcount]
+    top_meta: [category, date]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -165,7 +165,7 @@ article:
           - https://gcore.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # 文章底部信息
     # 从 meta_library 中取
-    bottom_meta: [author, updated, category, tags, counter, share, wordcount]
+    bottom_meta: [updated, tags]
     # meta library
     meta_library:
       # 默认文章作者（可在 front-matter 中覆盖）
@@ -214,7 +214,7 @@ article:
 
 sidebar:
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, webinfo]
+  for_page: [blogger, category, tagcloud]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -227,9 +227,9 @@ sidebar:
       avatar: /images/avatar.jpg
       shape: circle # circle, rectangle
       url: /about/
-      title:
-      subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      title: QQ
+      subtitle: 北京大学 · 数学与计算机
+      jinrishici: false
       social:
         - icon: fas fa-rss
           url: https://blog.chenquan-tutu.top/
@@ -256,7 +256,7 @@ sidebar:
       header:
         icon: fas fa-folder-open
         title: 文章分类
-        url: /blog/categories/
+        url: /categories/
     # ---------------------------------------
     # tagcloud widget
     tagcloud:
@@ -265,7 +265,7 @@ sidebar:
       header:
         icon: fas fa-tags
         title: 热门标签
-        url: /blog/tags/
+        url: /tags/
       min_font: 14
       max_font: 24
       color: true
@@ -319,9 +319,48 @@ sidebar:
           unit: '日'
 
 plugins:
+  # The homepage has its own layout; use normal navigation between page layouts.
+  pjax:
+    enable: false
   search:
     enable: true
     service: hexo  # hexo
-    js: https://cdn.jsdelivr.net/xxxxxxxx/js/search/hexo.js
+    js: /js/search/hexo.js
   wordcount:
     enable: true
+
+# The illustration remains the cover. Use its colors for the reading area.
+color_scheme:
+  common:
+    theme: '#617848'
+    link: '#617848'
+    button: '#617848'
+    hover: '#43572f'
+  light:
+    site_bg: '#f8f8f1'
+    card: '#f8f8f1'
+    text: '#343d2d'
+    p: '#343d2d'
+
+custom_css:
+  navbar:
+    effect: []
+  sidebar:
+    effect: []
+  body:
+    effect: []
+    text_align:
+      p: left
+  border_radius:
+    card: 0px
+  fontfamily:
+    logofont:
+      fontfamily: 'Georgia, "Songti SC", serif'
+      name: ''
+      url: ''
+    bodyfont:
+      fontfamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif'
+      name: ''
+      url: ''
+    codefont:
+      fontfamily: 'Menlo, Monaco, Consolas, monospace'

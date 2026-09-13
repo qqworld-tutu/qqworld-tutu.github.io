@@ -1,9 +1,10 @@
 ---
 layout: post
 title: PKU AutoBookingVenues -fixed by cq-tutu
+description: 想打羽毛球一直抢不到场，找来的预约脚本又已经跑不动了。改了下 Selenium 和预约流程，把配置和用法放在这里。
 author: QQ
 bottom_meta: true
-date: 2025/2/9 13：23
+date: 2025-02-09 13:23:00
 categories:
   - 项目
 tags:
