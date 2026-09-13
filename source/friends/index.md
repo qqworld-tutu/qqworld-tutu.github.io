@@ -17,7 +17,7 @@ title: 我的朋友们 # 可选，这是友链页的标题
 {
     title: "QQ",
     intro: "一只兔兔",
-    link: "https://www.chenquan-tutu.top/",
-    avatar: "https://www.chenquan-tutu.top/images/avatar.jpg"
+    link: "https://blog.chenquan-tutu.top/",
+    avatar: "https://blog.chenquan-tutu.top/images/avatar.jpg"
 }
 ```

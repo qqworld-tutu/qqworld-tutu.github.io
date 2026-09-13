@@ -1,0 +1,8 @@
+<% page.sidebar=['blogger']; %>
+<%- partial('_pre') %>
+<main id="l_main" class="qq-index qq-about-page">
+  <div class="qq-page-title"><h1>关于</h1></div>
+  <article class="md qq-about-content" id="post-body"><%- page.content %></article>
+  <%- partial('_plugins/comments/index',{post:page}) %>
+</main>
+<%- partial('_partial/side') %>

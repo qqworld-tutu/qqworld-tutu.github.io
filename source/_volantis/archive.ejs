@@ -1,0 +1,13 @@
+<% page.sidebar=['blogger']; %>
+<%- partial('_pre') %>
+<main id="l_main" class="qq-index">
+<% if(page.year || page.month){ %><%- partial('_partial/archive') %><% }else{ %>
+  <div class="qq-page-title"><h1>归档</h1><span><%= site.posts.length %> 篇文章</span></div>
+  <% let year; site.posts.sort('date',-1).each(function(post){if(post.archive===false)return;const next=date(post.date,'YYYY');if(year!==next){ if(year){ %></div></section><% } year=next; %>
+    <section class="qq-archive-year"><h2><%= year %></h2><div>
+  <% } %>
+    <a class="qq-archive-row" href="<%= url_for(post.path) %>"><time datetime="<%= date(post.date,'YYYY-MM-DD') %>"><%= date(post.date,'MM-DD') %></time><span><%= post.title %></span></a>
+  <% }); if(year){ %></div></section><% } %>
+<% } %>
+</main>
+<%- partial('_partial/side') %>

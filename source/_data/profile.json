@@ -2,6 +2,7 @@
   "name": "QQ",
   "avatar": "/images/avatar.jpg",
   "about": "/about/",
+  "wechat": "dj7152",
   "affiliation": "北京大学 · 数学科学学院 & 计算机科学与技术双学位",
   "contacts": [
     { "label": "GitHub", "icon": "github", "url": "https://github.com/qqworld-tutu" },

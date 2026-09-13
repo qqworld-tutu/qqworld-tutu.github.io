@@ -318,7 +318,7 @@ plugins:
   pjax:
     enable: false
   search:
-    enable: true
+    enable: false # Shared header uses source/js/chrome.js on every page.
     service: hexo  # hexo
     js: /js/search/hexo.js
   wordcount:

@@ -39,7 +39,11 @@ GitHub 仓库的 Pages 发布来源设置为 GitHub Actions，自定义域名为
 
 首页从 Hexo 内容模型生成文章列表、分类和标签，超过 8 篇自动显示客户端分页；搜索涵盖全部已发布文章的标题、摘要、分类和标签。归档页面保留 Hexo 原生分页。导航、侧栏和其他页面色彩配置在 `_config.volantis.yml`。页面间使用正常跳转，避免不同布局之间的 PJAX 冲突。正文、数学公式、评论和原有文章地址保留。
 
+全站导航、搜索弹窗和页脚共用 `lib/chrome.cjs`、`source/css/chrome.css`、`source/js/chrome.js`，不再分别修改首页与主题导航。分类、标签、归档、友链及关于页的本地模板在 `source/_volantis/`，由 `scripts/homepage.js` 注册为主题视图覆盖，内页样式在 `source/css/interior.css`。文章正文仍用 Volantis 渲染；分类、标签和文章计数都来自 Hexo，不写死项目数量。友链资料继续维护在 `source/_data/friends.yml`，关于页原文在 `source/about/index.md`。
+
 个人资料与联系方式统一保存在 `source/_data/profile.json`。首页和内页侧栏共同使用它，修改院系、邮箱或链接后重新构建即可；共享样式在 `source/css/profile.css`。站名使用本机的 Avenir Next / Trebuchet MS 字体，不额外下载网络字体。
+
+微信号在该 JSON 的 `wechat` 字段里修改。联系区支持鼠标悬停、键盘聚焦和手机点按查看，按 Escape 可收起；手机上资料区位于内容下方。
 
 ## 修改首页摘要
 

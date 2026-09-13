@@ -1,0 +1,56 @@
+/* Reading pages share the homepage's canvas, content width and quiet rhythm. */
+html {scroll-padding-top:100px;scroll-behavior:smooth;}
+body {background:#fafbf8;color:#30372f;}
+#l_body {padding-top:76px;}
+#l_cover:not(:has(.cover-wrapper)) {display:none;}
+#safearea {box-sizing:border-box;max-width:1190px;padding:54px 40px 0;}
+.body-wrapper {max-width:1110px;min-height:calc(100svh - 76px - 54px - 150px);}
+#l_main {box-sizing:border-box;}
+#l_side {width:216px;}
+#l_side .widget.blogger {border:0;}
+#l_side .widget.blogger>.content {padding:0;}
+#l_side .widget.blogger, #l_side .widget.blogger>.content {overflow:visible;}
+#l_side .widget-sticky:empty {display:none;}
+#s-top {display:none!important;}
+#l_body #safearea>.qq-footer {margin-top:55px;}
+.qq-page-title {display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:30px;padding-bottom:24px;border-bottom:1px solid #53663826;}
+.qq-page-title h1,#l_main .article .title {margin:0;font:550 30px/1.5 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;letter-spacing:-.025em;color:#30372f;}
+.qq-page-title>span {font-size:12px;color:#667060;}
+.qq-directory-row {display:flex;justify-content:space-between;align-items:center;gap:24px;padding:23px 0;border-bottom:1px solid #53663826;color:#30372f;font-size:20px;text-decoration:none;}
+.qq-directory-row:hover {color:#536638;}
+.qq-directory-row small {font-size:12px;color:#667060;}
+.qq-tag-index {display:flex;align-items:baseline;flex-wrap:wrap;gap:15px 32px;}
+.qq-tag-index a {display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid #53663826;color:#536638;font-size:17px;text-decoration:none;}
+.qq-tag-index a:hover {border-color:#536638;}
+.qq-tag-index small {font-size:11px;color:#667060;}
+.qq-archive-year {display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;margin-top:30px;}
+.qq-archive-year h2 {margin:0;padding-top:13px;font:500 22px/1.5 'Avenir Next','Trebuchet MS',sans-serif;color:#536638;}
+.qq-archive-row {display:grid;grid-template-columns:45px minmax(0,1fr);gap:20px;align-items:baseline;padding:17px 0;border-bottom:1px solid #53663826;color:#30372f;text-decoration:none;font-size:16px;line-height:1.7;}
+.qq-archive-row:hover {color:#536638;}
+.qq-archive-row time {font-size:12px;color:#667060;}
+.qq-intro {font-size:15px;line-height:1.9;color:#667060;}
+.qq-intro p {margin:0 0 10px;}
+.qq-friends-list {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin-top:25px;}
+.qq-friend {display:flex;align-items:center;gap:14px;min-width:0;padding:22px 0;border-bottom:1px solid #53663826;color:#30372f;text-decoration:none;}
+.qq-friend img,.qq-friend-initial {width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;background:#e9eee2;}
+.qq-friend-initial {display:grid;place-items:center;font-size:20px;}
+.qq-friend>span {min-width:0;}
+.qq-friend strong {display:block;font-size:15px;font-weight:550;overflow-wrap:anywhere;}
+.qq-friend-description {display:block;margin-top:4px;font-size:12px;line-height:1.7;color:#667060;overflow-wrap:anywhere;}
+.qq-friend:hover strong {color:#536638;text-decoration:underline;text-underline-offset:4px;}
+.qq-friends-more {margin-top:45px;padding-top:20px;border-top:1px solid #53663826;font-size:14px;}
+.qq-friends-more pre {font-size:12px;overflow:auto;}
+#l_main .post-list::before {font-size:16px;color:#30372f;}
+#l_main .post-v3 .article-title {font:550 23px/1.55 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}
+body:has(a[aria-current=page][href='/about/']) #l_main .article .article-meta {display:none;}
+body:has(a[aria-current=page][href='/about/']) #post-body {padding-top:20px;font-size:16px;line-height:2;}
+#l_main :focus-visible {outline:2px solid #536638;outline-offset:4px;}
+#l_main article#comments {margin-top:38px;padding:24px 0;background:transparent;border-top:1px solid #53663826;box-shadow:none;border-radius:0;}
+.qq-about-content {font-size:16px;line-height:2;}
+.qq-about-content p:first-child {margin-top:0;}
+.qq-about-content p {margin:0 0 18px;}
+@media(max-width:1080px){#safearea{padding:42px 35px 0}#l_main{padding-right:35px}}
+@media(max-width:800px){#l_body{padding-top:65px}#safearea{padding:35px 24px 0}#l_main{padding-right:0}.qq-page-title h1,#l_main .article .title{font-size:27px}.qq-page-title{margin-bottom:20px;padding-bottom:20px}.qq-archive-year{grid-template-columns:1fr;gap:4px}.qq-archive-row{gap:14px}.qq-friends-list{gap:0 20px}}
+@media(max-width:600px){.qq-friends-list{grid-template-columns:1fr}.qq-directory-row{font-size:18px;padding:20px 0}.qq-page-title>span{font-size:11px}.qq-tag-index{gap:12px 22px}.qq-friends-more{margin-top:30px}.body-wrapper{min-height:calc(100svh - 250px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:768px){#l_side:has(.qq-profile){width:100%;float:none;clear:both;margin-top:36px}#l_side .widget.blogger.desktop{display:block!important;border-top:1px solid #53663826;padding-top:25px}}

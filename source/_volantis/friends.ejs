@@ -1,0 +1,19 @@
+<% page.sidebar=['blogger']; %>
+<%- partial('_pre') %>
+<main id="l_main" class="qq-index qq-friends-page">
+  <div class="qq-page-title"><h1>友链</h1></div>
+  <div class="qq-intro"><%- page.excerpt %></div>
+  <% (site.data.friends||[]).forEach(function(group){ %>
+    <% if(site.data.friends.length>1){ %><h2 class="qq-friends-group"><%= group.group %></h2><% } %>
+    <% if(group.description){ %><p><%= group.description %></p><% } %>
+    <div class="qq-friends-list"><% (group.items||[]).forEach(function(friend){if(!friend.url||!friend.title)return; %>
+      <a class="qq-friend" href="<%= friend.url %>" target="_blank" rel="noopener noreferrer">
+        <% if(friend.avatar){ %><img no-lazy loading="lazy" src="<%= friend.avatar %>" alt="" width="44" height="44"><% }else{ %><span class="qq-friend-initial" aria-hidden="true"><%= friend.title.slice(0,1) %></span><% } %>
+        <span><strong><%= friend.title %></strong><span class="qq-friend-description"><%= friend.description||'' %></span></span>
+      </a>
+    <% }); %></div>
+  <% }); %>
+  <div class="qq-friends-more md"><%- page.more %></div>
+  <%- partial('_plugins/comments/index',{post:page}) %>
+</main>
+<%- partial('_partial/side') %>

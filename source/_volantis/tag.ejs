@@ -1,0 +1,12 @@
+<% page.sidebar=['blogger']; page.comments=false; %>
+<%- partial('_pre') %>
+<main id="l_main" class="qq-index">
+<% if (['tag','tags'].includes(page.layout)) { %>
+  <div class="qq-page-title"><h1>标签</h1><span><%= site.tags.length %> 个标签</span></div>
+  <div class="qq-tag-index"><% site.tags.sort('name').each(function(t){ %>
+    <a href="<%= url_for(t.path) %>"><span># <%= t.name %></span><small><%= t.posts.length %></small></a>
+  <% }) %></div>
+  <%- page.content %>
+<% } else { %><%- partial('_partial/archive') %><% } %>
+</main>
+<%- partial('_partial/side') %>

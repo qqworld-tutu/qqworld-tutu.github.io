@@ -1,5 +1,6 @@
 /* Shared by the custom homepage and the Volantis profile widget. */
 .qq-profile { text-align: left; }
+.qq-profile h2, #l_side .widget.blogger .qq-profile h2 {color:#30372f;}
 #l_side .widget.blogger .qq-profile h2, #l_side .widget.blogger .qq-profile p { text-align: left; }
 .qq-profile .qq-avatar { display: block; width: 72px; margin-bottom: 14px; }
 .qq-profile .qq-avatar img { display: block; width: 72px; height: 72px; margin: 0; border-radius: 50%; object-fit: cover; }
@@ -11,3 +12,10 @@
 .qq-contacts a:hover { color: var(--journal-accent, #536638); text-decoration: underline; text-underline-offset: 4px; }
 .qq-contacts a:focus-visible { outline: 2px solid var(--journal-accent, #536638); outline-offset: 3px; }
 .qq-contacts svg { display: block; flex: 0 0 15px; }
+.qq-contacts { display:grid; grid-template-columns:max-content max-content; column-gap:22px; row-gap:0; }
+.qq-wechat { position:relative; display:inline-flex; }
+.qq-wechat button { display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:0;border:0;background:none;color:var(--journal-muted,#667060);font:11px/1.5 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;cursor:pointer; }
+.qq-wechat button:hover {color:var(--journal-accent,#536638);}
+.qq-wechat-tip {position:absolute;z-index:120;bottom:100%;right:0;min-width:max-content;padding:8px 12px;background:#fafbf8;border:1px solid #53663833;border-radius:6px;box-shadow:0 5px 18px #30372f18;color:#30372f;font:12px/1.7 -apple-system,BlinkMacSystemFont,sans-serif;visibility:hidden;opacity:0;pointer-events:none;}
+.qq-wechat:not(.dismissed):is(:hover,:focus-within,.is-open) .qq-wechat-tip {visibility:visible;opacity:1;pointer-events:auto;}
+@media(max-width:768px){.qq-profile{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:16px;align-items:start}.qq-profile .qq-avatar{width:56px;grid-row:1/4}.qq-profile .qq-avatar img{width:56px;height:56px}.qq-profile .qq-contacts{grid-column:2}.sidebar .author{display:block;grid-column:1/-1;margin-bottom:0}.qq-profile .qq-degree{display:inline}}

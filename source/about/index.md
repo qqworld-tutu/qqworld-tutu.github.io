@@ -1,8 +1,9 @@
 ---
-layout: docs
+layout: qq-about
 seo_title: 关于
+title: 关于
 bottom_meta: true
-sidebar: []
+sidebar: [blogger]
 twikoo:
   placeholder: 有什么想对我说的呢？
 ---
