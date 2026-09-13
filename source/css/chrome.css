@@ -1,4 +1,10 @@
 /* Identical navigation, search and footer on the homepage and theme pages. */
+/* Reserve one consistent viewport gutter on short and long pages alike. */
+html {overflow-y:scroll;scrollbar-gutter:stable;}
+html::-webkit-scrollbar,html>body::-webkit-scrollbar {width:8px;height:8px;}
+html::-webkit-scrollbar-track,html>body::-webkit-scrollbar-track {background:transparent;}
+html::-webkit-scrollbar-thumb,html>body::-webkit-scrollbar-thumb {background:#617848;border-radius:4px;}
+html::-webkit-scrollbar-thumb:hover,html>body::-webkit-scrollbar-thumb:hover {background:#43572f;}
 .qq-header, #l_header.qq-header { box-sizing:border-box;position:fixed;inset:0 0 auto;width:100%;max-width:none;height:76px;margin:0;padding:0 max(calc((100vw - 1250px)/2),34px);display:flex;align-items:center;gap:26px;z-index:100;opacity:1!important;visibility:visible;transform:none!important;border:0;border-radius:0;box-shadow:0 1px 0 #53663826;background:#fafbf8ee;backdrop-filter:blur(16px);color:#30372f;transition:background .2s; }
 body:has(.hero):not(.scrolled) #l_header.qq-header { background:transparent;box-shadow:none;backdrop-filter:none; }
 .qq-header a { color:inherit;text-decoration:none; }
