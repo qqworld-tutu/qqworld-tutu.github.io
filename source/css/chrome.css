@@ -11,6 +11,12 @@ body:has(.hero):not(.scrolled) #l_header.qq-header { background:transparent;box-
 .qq-header button {font:inherit;color:inherit;cursor:pointer;background:none;border:0;}
 .qq-search-open {display:grid;place-items:center;width:32px;height:38px;padding:0;flex-shrink:0;}
 .qq-mobile-menu {display:none;}
+/* Volantis styles every details/summary globally, including negative margins.
+   Keep the shared navigation independent of those article disclosure styles. */
+#l_header.qq-header {font:400 16px/1.5 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}
+#l_header .qq-mobile-menu {margin:0;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible;font:400 13px/1.8 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}
+#l_header .qq-mobile-menu summary {margin:0;padding:8px 0 8px 5px;border:0;border-radius:0;box-shadow:none;background:transparent;font:inherit;letter-spacing:normal;}
+#l_header .qq-mobile-menu summary::before,#l_header .qq-mobile-menu summary::after {content:none;display:none;}
 .qq-header [hidden] {display:none!important;}
 .qq-header :focus-visible,.qq-footer :focus-visible,.qq-search :focus-visible {outline:2px solid #536638;outline-offset:4px;}
 .qq-footer {display:flex;gap:25px;align-items:center;margin:45px 0 0;padding:24px 0 48px;border-top:1px solid #53663826;color:#667060;font:11px/1.8 -apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;}
