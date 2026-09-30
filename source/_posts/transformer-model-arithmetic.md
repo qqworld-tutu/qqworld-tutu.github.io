@@ -24,7 +24,7 @@ technical_article: true
 
 为了使讨论具体一些，我们以 Llama 一类 decoder-only 模型为例。它采用 Pre-RMSNorm 和 RoPE，线性层不带偏置，前馈部分使用 SwiGLU。后面的计数都建立在这些约定上，遇到不同结构时，再补上相应的参数项。
 
-<div class="technical-figure"><iframe class="article-figure" src="/figures/transformer-arithmetic/01-decoder-architecture/?embed=1" title="Decoder-only 模型从词嵌入、Transformer Block 到词表输出的计算流程。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/01-decoder-architecture.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/01-decoder-architecture.svg" alt="Decoder-only 模型从词嵌入、Transformer Block 到词表输出的计算流程。" no-lazy></a></div>
+<div class="technical-figure"><iframe class="article-figure" scrolling="no" src="/figures/transformer-arithmetic/01-decoder-architecture/?embed=1" title="Decoder-only 模型从词嵌入、Transformer Block 到词表输出的计算流程。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/01-decoder-architecture.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/01-decoder-architecture.svg" alt="Decoder-only 模型从词嵌入、Transformer Block 到词表输出的计算流程。" no-lazy></a></div>
 
 输入 token 首先通过词嵌入表转换为向量，随后经过若干个 Transformer Block。在每个 Block 中，Attention 根据可见位置的信息更新表示，FFN 则对各个位置分别进行非线性变换，两部分的输出都通过残差相加回到主干。经过所有层之后，最终表示再由输出头映射为词表中各个 token 的分数。
 
@@ -61,7 +61,7 @@ $$
 
 这里将所有头的投影合并写在一个矩阵中。得到 Q、K、V 后，再沿特征维拆成各个头，分别完成注意力计算。最后将各头的结果沿特征维拼接，由 $W_O$ 映射回 $d$ 维。
 
-<div class="technical-figure"><iframe class="article-figure" src="/figures/transformer-arithmetic/02-qkvo-tensor-flow/?embed=1" title="GQA 中 Q、K、V 的投影、拆头与注意力计算，以及各步的张量形状。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/02-qkvo-tensor-flow.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/02-qkvo-tensor-flow.svg" alt="GQA 中 Q、K、V 的投影、拆头与注意力计算，以及各步的张量形状。" no-lazy></a></div>
+<div class="technical-figure"><iframe class="article-figure" scrolling="no" src="/figures/transformer-arithmetic/02-qkvo-tensor-flow/?embed=1" title="GQA 中 Q、K、V 的投影、拆头与注意力计算，以及各步的张量形状。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/02-qkvo-tensor-flow.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/02-qkvo-tensor-flow.svg" alt="GQA 中 Q、K、V 的投影、拆头与注意力计算，以及各步的张量形状。" no-lazy></a></div>
 
 为了看清拆头前后的形状，可以取一个小例子。假设输入包含 3 个 token，$d=8$，共有 4 个 Query 头和 2 个 KV 头，每个头的宽度为 2。此时各步的矩阵乘法如下。
 
@@ -93,7 +93,7 @@ $$
 
 ### 头数与参数共享
 
-<div class="technical-figure"><iframe class="article-figure" src="/figures/transformer-arithmetic/03-mha-gqa-mqa/?embed=1" title="MHA、GQA 和 MQA 中 Query 头与 KV 头的共享关系。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/03-mha-gqa-mqa.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/03-mha-gqa-mqa.svg" alt="MHA、GQA 和 MQA 中 Query 头与 KV 头的共享关系。" no-lazy></a></div>
+<div class="technical-figure"><iframe class="article-figure" scrolling="no" src="/figures/transformer-arithmetic/03-mha-gqa-mqa/?embed=1" title="MHA、GQA 和 MQA 中 Query 头与 KV 头的共享关系。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/03-mha-gqa-mqa.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/03-mha-gqa-mqa.svg" alt="MHA、GQA 和 MQA 中 Query 头与 KV 头的共享关系。" no-lazy></a></div>
 
 | 结构 | KV 头数 | 在 $hd_h=d$ 时的投影参数 |
 |---|---:|---:|
@@ -122,7 +122,7 @@ $$
 =\bigl[\operatorname{SiLU}(xW_1)\odot(xW_3)\bigr]W_2.
 $$
 
-<div class="technical-figure"><iframe class="article-figure" src="/figures/transformer-arithmetic/06-swiglu/?embed=1" title="SwiGLU 的两个投影结果经过门控相乘，再由输出投影映射回隐藏维度。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/06-swiglu.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/06-swiglu.svg" alt="SwiGLU 的两个投影结果经过门控相乘，再由输出投影映射回隐藏维度。" no-lazy></a></div>
+<div class="technical-figure"><iframe class="article-figure" scrolling="no" src="/figures/transformer-arithmetic/06-swiglu/?embed=1" title="SwiGLU 的两个投影结果经过门控相乘，再由输出投影映射回隐藏维度。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/06-swiglu.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/06-swiglu.svg" alt="SwiGLU 的两个投影结果经过门控相乘，再由输出投影映射回隐藏维度。" no-lazy></a></div>
 
 $W_1$ 与 $W_3$ 分别产生两个 $d_{ff}$ 维的中间结果，其中一个经过 SiLU 后，与另一个逐元素相乘。相乘后的宽度仍为 $d_{ff}$，最后再由 $W_2$ 映射回 $d$。这样一来，需要保存的权重矩阵由两个变成了三个，参数量为
 
@@ -190,7 +190,7 @@ $$
 
 前面讨论的 Dense 模型会在每个 token 上使用完整的 FFN。Mixtral 一类稀疏 MoE 则保留 Attention，将 FFN 扩展为多个专家，再由 Router 为每个 token 选择其中的一部分。于是，模型需要保存的参数和一个 token 实际使用的参数开始出现差别。
 
-<div class="technical-figure"><iframe class="article-figure" src="/figures/transformer-arithmetic/04-moe-routing/?embed=1" title="MoE 的路由概率、专家选择、输入分发与输出加权汇总。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/04-moe-routing.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/04-moe-routing.svg" alt="MoE 的路由概率、专家选择、输入分发与输出加权汇总。" no-lazy></a></div>
+<div class="technical-figure"><iframe class="article-figure" scrolling="no" src="/figures/transformer-arithmetic/04-moe-routing/?embed=1" title="MoE 的路由概率、专家选择、输入分发与输出加权汇总。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/04-moe-routing.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/04-moe-routing.svg" alt="MoE 的路由概率、专家选择、输入分发与输出加权汇总。" no-lazy></a></div>
 
 设每层包含 $E$ 个 SwiGLU 专家，每个 token 选择其中的 $k$ 个。每个专家有 $3dd_{ff}$ 个参数，而 Router 使用一个 $d\times E$ 的矩阵为所有专家打分。由此得到 FFN 子层的总参数量与激活参数量
 
@@ -225,7 +225,7 @@ $$
 
 在因果注意力中，新增一个位置并不会改变此前各位置的表示。因此，已经算出的 Key 和 Value 可以保存下来，供后续位置的 Query 读取，从而省去重复计算。历史 Query 则不会再参与后续位置的注意力计算，所以没有同样的缓存需求。
 
-<div class="technical-figure"><iframe class="article-figure" src="/figures/transformer-arithmetic/05-kv-cache/?embed=1" title="Prefill 建立缓存，decode 为每层追加当前 token 的 K/V 并读取历史缓存。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/05-kv-cache.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/05-kv-cache.svg" alt="Prefill 建立缓存，decode 为每层追加当前 token 的 K/V 并读取历史缓存。" no-lazy></a></div>
+<div class="technical-figure"><iframe class="article-figure" scrolling="no" src="/figures/transformer-arithmetic/05-kv-cache/?embed=1" title="Prefill 建立缓存，decode 为每层追加当前 token 的 K/V 并读取历史缓存。" loading="lazy"></iframe><a class="figure-static" href="/images/transformer-arithmetic/05-kv-cache.svg" target="_blank" rel="noopener"><img src="/images/transformer-arithmetic/05-kv-cache.svg" alt="Prefill 建立缓存，decode 为每层追加当前 token 的 K/V 并读取历史缓存。" no-lazy></a></div>
 
 缓存的大小可以直接由形状读出。在一层中，K 和 V 的形状均为 $[B,n_{kv},T,d_h]$。各层使用不同的权重和输入表示，因此需要分别保存自己的缓存。若每个元素占 $b$ 字节，将两份缓存以及全部 $L$ 层相加，得到
 
