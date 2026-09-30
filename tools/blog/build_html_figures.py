@@ -6,6 +6,7 @@ The QKV prototype remains available independently for comparison.
 """
 from pathlib import Path
 from html import escape
+import hashlib
 import json
 import re
 import runpy
@@ -29,6 +30,8 @@ html{color-scheme:light;background:#fafbf8}html.embedded{background:transparent;
 style += 'svg .shape{font-size:15px}svg .symbol{font-size:20px}svg .annotation{font-size:16px}svg .operation{font-size:17px}'
 style += '.formula.long{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:4px 0}.formula.long>span+span{margin-left:1.2em}'
 (BASE/'figure.css').write_text(style)
+CSS_REV = hashlib.sha256(style.encode()).hexdigest()[:12]
+JS_REV = hashlib.sha256((BASE/'figure.js').read_bytes()).hexdigest()[:12]
 
 def node(x,y,w,h,title,detail='',role=''):
     s=f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="3" class="operation-node"/>'
@@ -89,7 +92,7 @@ def export_svg(topic,stem,title,subtitle,rows,note_items):
 def emit(topic,stem,title,subtitle,rows,note_items,formula='',controls='',script='',kind=''):
     slug=f'{topic}/{stem}'
     content=''.join(f'<section class="stage {r["class"]}"><div class="stage-copy"><span class="step">{r["n"]}</span><h2>{r["title"]}</h2><p>{r["desc"]}</p></div><div class="diagram-scroll" tabindex="0" aria-label="{r["title"]}，窄屏可横向滚动">{r["svg"]}</div></section>' for r in rows)
-    doc=f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><link rel="stylesheet" href="/figures/figure.css"><script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embedded');</script></head><body data-kind="{kind}"><main><header><h1>{title}</h1><p>{subtitle}</p>{('<div class="formula long">'+formula+'</div>') if formula else ''}</header><figure class="figure">{controls}<p class="mobile-hint">图示可左右滑动，保留矩阵比例与文字大小。</p>{content}<figcaption>{notes(note_items)}</figcaption></figure><nav class="figure-footer" aria-label="图示文件"><a class="standalone-link" href="/figures/{slug}/" target="_blank" rel="noopener">放大查看</a><a href="/images/{topic}/{stem}.svg" target="_blank" rel="noopener">静态矢量图</a></nav></main><script>{script}</script><script src="/figures/figure.js"></script></body></html>'''
+    doc=f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><link rel="stylesheet" href="/figures/figure.css?v={CSS_REV}"><script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embedded');</script></head><body data-kind="{kind}"><main><header><h1>{title}</h1><p>{subtitle}</p>{('<div class="formula long">'+formula+'</div>') if formula else ''}</header><figure class="figure">{controls}<p class="mobile-hint">图示可左右滑动，保留矩阵比例与文字大小。</p>{content}<figcaption>{notes(note_items)}</figcaption></figure><nav class="figure-footer" aria-label="图示文件"><a class="standalone-link" href="/figures/{slug}/" target="_blank" rel="noopener">放大查看</a><a href="/images/{topic}/{stem}.svg" target="_blank" rel="noopener">静态矢量图</a></nav></main><script>{script}</script><script src="/figures/figure.js?v={JS_REV}"></script></body></html>'''
     dest=BASE/slug/'index.html';dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(doc)
     export_svg(topic,stem,title,subtitle,rows,note_items)
     FIGURES.append({'topic':topic,'stem':stem,'title':title,'url':f'/figures/{slug}/','svg':f'/images/{topic}/{stem}.svg'})
@@ -238,5 +241,5 @@ emit(TOPIC,'04-future-kl','当前的选择，也会改变未来的 KL','行表�
 
 (BASE/'manifest.json').write_text(json.dumps(FIGURES,ensure_ascii=False,indent=2))
 gallery=''.join(f'<li><a href="{f["url"]}">{f["title"]}</a></li>' for f in FIGURES)
-(BASE/'index.html').write_text(f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>两篇文章的图示</title><link rel="stylesheet" href="/figures/figure.css"><body><main class="figure-gallery"><h1>两篇文章的图示</h1><p>6 张 Transformer 图与 4 张 KL 图。点击标题可单独查看。</p><ol>{gallery}</ol></main></body></html>')
+(BASE/'index.html').write_text(f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>两篇文章的图示</title><link rel="stylesheet" href="/figures/figure.css?v={CSS_REV}"><body><main class="figure-gallery"><h1>两篇文章的图示</h1><p>6 张 Transformer 图与 4 张 KL 图。点击标题可单独查看。</p><ol>{gallery}</ol></main></body></html>')
 print(f'Generated {len(FIGURES)} HTML figures and SVG fallbacks.')
