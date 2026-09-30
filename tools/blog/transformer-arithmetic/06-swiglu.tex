@@ -1,0 +1,54 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,calc,backgrounds}
+\definecolor{teal}{HTML}{4F8FA5}
+\definecolor{orange}{HTML}{EE995B}
+\definecolor{violet}{HTML}{8A74B5}
+% One dimension unit is 0.30 cm: S=2,d=4,d_ff=6. No axis rescaling.
+\newcommand{\mat}[7]{
+\begin{scope}[shift={(#1,#2)}]
+\foreach \r in {1,...,#3}{\foreach \c in {1,...,#4}{
+\pgfmathtruncatemacro{\shade}{35+mod(13*\r+19*\c+7*\r*\c,45)}
+\fill[#5!\shade,rounded corners=.5pt] ({(\c-1)*.30+.015},{-(\r-1)*.30-.015}) rectangle ({\c*.30-.015},{-\r*.30+.015});}}
+\draw[black!55,thin] (0,0) rectangle (#4*.30,-#3*.30);
+\node[anchor=north,font=\small] at (#4*.15,-#3*.30-.15) {$#6$};
+\node[anchor=north,font=\scriptsize,text=black!65] at (#4*.15,-#3*.30-.57) {$#7$};
+\end{scope}}
+\begin{document}
+\begin{tikzpicture}[font=\small,>=Stealth]
+\path[use as bounding box] (0,.8) rectangle (15.5,-17.3);
+\node[font=\large] at (7.75,.35) {$Y=\bigl[\operatorname{SiLU}(XW_1)\odot(XW_3)\bigr]W_2$};
+\node[font=\small\bfseries,text=black!65] at (7.75,-.5) {1. 同一个 X，分别经过两个独立投影};
+\mat{.5}{-1.2}{2}{4}{teal}{X}{S\times d}
+\node[font=\Large] at (2.3,-1.8) {$\times$};
+\mat{3.0}{-1.2}{4}{6}{orange}{W_1}{d\times d_{ff}}
+\draw[->] (5.3,-1.5)--(6.1,-1.5);
+\node[draw=black!50,fill=black!3,rounded corners,minimum width=1.6cm,minimum height=.65cm] at (7.15,-1.5) {SiLU};
+\draw[->] (8.2,-1.5)--(9,-1.5);
+\mat{9.5}{-1.2}{2}{6}{orange}{G}{S\times d_{ff}}
+\node[anchor=west,text=black!65] at (12,-1.5) {门控支路};
+\mat{.5}{-4.0}{2}{4}{teal}{X}{S\times d}
+\node[font=\Large] at (2.3,-4.6) {$\times$};
+\mat{3.0}{-4.0}{4}{6}{violet}{W_3}{d\times d_{ff}}
+\draw[->] (5.3,-4.3)--(9,-4.3);
+\mat{9.5}{-4.0}{2}{6}{violet}{U}{S\times d_{ff}}
+\node[anchor=west,text=black!65] at (12,-4.3) {数值支路};
+\node[font=\small\bfseries,text=black!65] at (7.75,-6.8) {2. 对应元素相乘，形状不变};
+\mat{2.0}{-7.6}{2}{6}{orange}{G}{S\times d_{ff}}
+\node[font=\Large] at (4.5,-7.9) {$\odot$};
+\mat{5.2}{-7.6}{2}{6}{violet}{U}{S\times d_{ff}}
+\node[font=\Large] at (7.7,-7.9) {$=$};
+\mat{8.4}{-7.6}{2}{6}{teal}{Z}{S\times d_{ff}}
+\node[font=\small\bfseries,text=black!65] at (7.75,-10.3) {3. 第三个矩阵把中间结果投影回 d 维};
+\mat{2.0}{-11.1}{2}{6}{teal}{Z}{S\times d_{ff}}
+\node[font=\Large] at (4.5,-12) {$\times$};
+\mat{5.2}{-11.1}{6}{4}{teal}{W_2}{d_{ff}\times d}
+\node[font=\Large] at (7.7,-12) {$=$};
+\mat{8.4}{-11.1}{2}{4}{teal}{Y}{S\times d}
+\node[fill=black!4,rounded corners,inner sep=10pt,text width=14.3cm,align=left,anchor=north] at (7.75,-14.5) {
+\textbf{维度}\quad 图取 $S=2,d=4,d_{ff}=6$，省略 batch；每行对应一个 token。\\[5pt]
+\textbf{对象}\quad 三块 $W$ 是参数；$G,U,Z,Y$ 是中间结果，不能计入参数量。\\[5pt]
+\textbf{计算}\quad SiLU 和逐元素相乘无参数；三次投影合计 $3dd_{ff}$ 个权重。};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,52 @@
+{
+  "reverse_fit": {
+    "mean": 2.98430726668006,
+    "std": 1.023365765396359,
+    "kl": 0.688769004172527
+  },
+  "rb_counterexample": {
+    "P": [
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.01,
+        0.99
+      ]
+    ],
+    "Q": [
+      [
+        0.25,
+        0.75
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.99,
+        0.01
+      ]
+    ],
+    "mean_MC": 2.3954497627918396,
+    "mean_RB": 2.3954497627918396,
+    "var_MC": 3.315913584927973,
+    "var_RB": 5.069741857547936
+  },
+  "two_outcome": {
+    "KL": 0.19274475702175753,
+    "reverse_gradient": 1.3862943611198906,
+    "forward_gradient": 1.875
+  },
+  "topk_gradient_check": {
+    "exact": 1.3862943611198906,
+    "masked_k4_plus_exact_head": 2.386294361119891,
+    "corrected": 1.3862943611198908
+  },
+  "checks": "Exact KL gradients, head/tail gradient and RB counterexample verified."
+}

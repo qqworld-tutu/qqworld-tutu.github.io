@@ -1,5 +1,23 @@
+<% if (page.technical_article) { %>
+<noscript>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+html { overflow-y:auto !important; }
+.kill-noscript { display:none !important; }
+#l_body, #safearea { display:block; }
+#l_header { display:flex; }
+#post-body .article-figure { display:none !important; }
+#post-body .figure-static { display:block !important; }
+</style>
+</noscript>
+<% } %>
 <link rel="stylesheet" href="<%- qq_asset('css/editorial.css') %>">
 <link rel="stylesheet" href="<%- qq_asset('css/profile.css') %>">
 <link rel="stylesheet" href="<%- qq_asset('css/interior.css') %>">
 <link rel="stylesheet" href="<%- qq_asset('css/chrome.css') %>">
 <script src="<%- qq_asset('js/chrome.js') %>" defer></script>
+<% if (page.technical_article) { %>
+<link rel="stylesheet" href="<%- qq_asset('vendor/katex/katex.min.css') %>">
+<link rel="stylesheet" href="<%- qq_asset('css/technical-article.css') %>">
+<script src="<%- qq_asset('js/technical-article.js') %>" defer></script>
+<% } %>

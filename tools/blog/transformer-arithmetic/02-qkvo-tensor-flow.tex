@@ -1,0 +1,83 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage[UTF8,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,calc,backgrounds}
+\definecolor{teal}{HTML}{4F8FA5}
+\definecolor{orange}{HTML}{EE995B}
+\definecolor{violet}{HTML}{8A74B5}
+\definecolor{coral}{HTML}{C95B5B}
+% Geometry ledger: B=1, S=3, d=8, h=4, n_kv=2, d_h=2.
+% Every dimension unit is 0.22 cm; transpose swaps row/column counts.
+\newcommand{\mat}[8]{% x,y,rows,cols,color,symbol,shape,triangular
+  \begin{scope}[shift={(#1,#2)}]
+    \foreach \r in {1,...,#3}{\foreach \c in {1,...,#4}{
+      \pgfmathtruncatemacro{\shade}{35+mod(13*\r+19*\c+7*\r*\c,45)}
+      \ifnum#8=1
+        \ifnum\c>\r\else
+          \fill[#5!\shade,rounded corners=.5pt] ({(\c-1)*.22+.012},{-(\r-1)*.22-.012}) rectangle ({\c*.22-.012},{-\r*.22+.012});
+        \fi
+      \else
+        \fill[#5!\shade,rounded corners=.5pt] ({(\c-1)*.22+.012},{-(\r-1)*.22-.012}) rectangle ({\c*.22-.012},{-\r*.22+.012});
+      \fi
+    }}
+    \draw[black!55,thin] (0,0) rectangle (#4*.22,-#3*.22);
+    \if\relax\detokenize{#6}\relax\else
+      \node[font=\small,anchor=north] at (#4*.11,-#3*.22-.14) {$#6$};
+      \node[font=\scriptsize,text=black!65,anchor=north] at (#4*.11,-#3*.22-.58) {$#7$};
+    \fi
+  \end{scope}
+}
+\begin{document}
+\begin{tikzpicture}[font=\small,>=Stealth]
+\path[use as bounding box] (0,1) rectangle (15.6,-19.2);
+\node[font=\large] at (7.8,.55) {$Q=XW_Q,\quad K=XW_K,\quad V=XW_V,\quad O=[H_1|\cdots|H_h]W_O$};
+\node[font=\small\bfseries,text=black!65] at (7.8,-.3) {1. 投影：把三次右乘并排画出（颜色区分 Q / K / V）};
+\mat{.5}{-1.0}{3}{8}{teal}{X}{3\times8}{0}
+\node[font=\Large] at (2.85,-1.85) {$\times$};
+\mat{3.5}{-1.0}{8}{8}{teal}{}{}{0}
+\mat{5.26}{-1.0}{8}{4}{orange}{}{}{0}
+\mat{6.14}{-1.0}{8}{4}{violet}{}{}{0}
+\node[anchor=north] at (5.26,-2.9) {$[W_Q\mid W_K\mid W_V]$};
+\node[anchor=north,font=\scriptsize,text=black!65] at (5.26,-3.34) {$8\times(8+4+4)$};
+\node[font=\Large] at (7.75,-1.85) {$=$};
+\mat{8.6}{-1.0}{3}{8}{teal}{}{}{0}
+\mat{10.36}{-1.0}{3}{4}{orange}{}{}{0}
+\mat{11.24}{-1.0}{3}{4}{violet}{}{}{0}
+\node[anchor=north] at (10.36,-1.8) {$[Q\mid K\mid V]$};
+\node[anchor=north,font=\scriptsize,text=black!65] at (10.36,-2.24) {$3\times(8+4+4)$};
+\node[anchor=west,align=left,text=black!65] at (12.65,-1.9) {Q：4 个头\\K/V：各 2 个头};
+\begin{scope}[yshift=-.65cm]
+\node[text=black!70,align=center] at (7.8,-4.1) {按列拆头：Q 每 2 列一头；K、V 也每 2 列一头。每个头保留全部 3 行。\\下面取 Query 头 $i$ 及其共享的 KV 头 $g=\lceil i/2\rceil$；Q/K 先做 RoPE。};
+\node[font=\small\bfseries,text=black!65] at (7.8,-5.2) {2. 匹配：每个 Query 头独立计算概率};
+\mat{1.0}{-5.9}{3}{2}{teal}{\widetilde Q_i}{3\times2}{0}
+\node[font=\Large] at (2.15,-6.23) {$\times$};
+\mat{2.8}{-5.9}{2}{3}{orange}{\widetilde K_g^{\top}}{2\times3}{0}
+\node[draw=black!50,fill=black!3,rounded corners,minimum width=3.1cm,minimum height=.9cm,align=center] (softmax) at (6.55,-6.23) {除以 $\sqrt{d_h}$，加因果 mask\\沿 Key 位置做 softmax};
+\begin{pgfonlayer}{background}
+\draw[->] (4.1,-6.23)--(softmax.west);
+\draw[->] (softmax.east)--(9.1,-6.23);
+\end{pgfonlayer}
+\mat{9.6}{-5.9}{3}{3}{coral}{A_i}{3\times3}{1}
+\node[anchor=west,align=left,text=black!65] at (11.3,-6.2) {行：Query 位置\\列：Key 位置\\白格：未来位置，概率为 0};
+\node[font=\small\bfseries,text=black!65] at (7.8,-8.65) {3. 汇总：按概率加权 Value，得到一个头的输出};
+\mat{3.0}{-9.35}{3}{3}{coral}{A_i}{3\times3}{1}
+\node[font=\Large] at (4.45,-9.68) {$\times$};
+\mat{5.25}{-9.35}{3}{2}{violet}{V_g}{3\times2}{0}
+\node[font=\Large] at (6.65,-9.68) {$=$};
+\mat{7.55}{-9.35}{3}{2}{teal}{H_i}{3\times2}{0}
+\node[anchor=west,align=left,text=black!65] at (9.3,-9.68) {共享的是 $K_g,V_g$\\不是 $A_i$ 或 $H_i$};
+\node[font=\small\bfseries,text=black!65] at (7.8,-12.05) {4. 沿特征维拼接 4 个头，再经过输出投影};
+\mat{1.5}{-12.75}{3}{8}{teal}{[H_1|H_2|H_3|H_4]}{3\times8}{0}
+\foreach \x in {1.94,2.38,2.82}{\draw[white,line width=1.5pt] (\x,-12.75)--(\x,-13.41);}
+\node[font=\Large] at (4.2,-13.63) {$\times$};
+\mat{5.1}{-12.75}{8}{8}{teal}{W_O}{8\times8}{0}
+\node[font=\Large] at (7.8,-13.63) {$=$};
+\mat{8.8}{-12.75}{3}{8}{teal}{O}{3\times8}{0}
+\node[anchor=west,align=left,text=black!65] at (11.4,-13.3) {宽度回到 $d=8$\\可与残差相加};
+\node[fill=black!4,rounded corners,inner sep=10pt,text width=14.4cm,align=left,anchor=north] at (7.8,-16.35) {
+\textbf{维度}\quad $B=1,S=3,d=8,h=4,n_{kv}=2,d_h=2$；每格对应一个元素。\\[5pt]
+\textbf{对象}\quad $W$ 是可学习权重；$Q,K,V,H,O$ 是中间张量；$A$ 是概率。\\[5pt]
+\textbf{计算}\quad 拆头只重排数据，不新增权重；图中全部投影共 $192$ 个参数。};
+\end{scope}
+\end{tikzpicture}
+\end{document}

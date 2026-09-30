@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KL 数值与梯度实验</title><link rel="stylesheet" href="../lab.css"><script src="calculator.js" defer></script></head>
+<body><main><h1>数值估对，梯度也对吗？</h1><p class="intro">模型只有 A、B 两种回答。枚举两种结果，比较估计值的期望与直接反传的期望。这里没有随机采样误差。</p>
+<div class="controls"><label>当前模型 P(A)：<output id="p-value" for="p">0.80</output><input id="p" type="range" min="5" max="95" value="80"></label><label>参考模型 Q(A)：<output id="q-value" for="q">0.50</output><input id="q" type="range" min="5" max="95" value="50"></label></div>
+<div class="probabilities" aria-hidden="true"><div><div class="bar-label"><span>当前 P · 绿色 A</span><span>棕色 B</span></div><div class="bar"><span id="p-bar"></span></div></div><div><div class="bar-label"><span>参考 Q · 绿色 A</span><span>棕色 B</span></div><div class="bar"><span id="q-bar"></span></div></div></div>
+<div class="metrics" aria-live="polite"><div class="metric"><span>Reverse KL · D(P ∥ Q)</span><strong id="reverse">—</strong></div><div class="metric"><span>Forward KL · D(Q ∥ P)</span><strong id="forward">—</strong></div></div>
+<div class="table-wrap"><table><caption>对概率 p = P(A) 求导</caption><thead><tr><th>公式</th><th>期望数值</th><th>直接梯度的期望</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p id="explanation" class="notice" aria-live="polite"></p><p class="note">前两行对完整概率加权求导；k₁/k₂/k₃ 行则先固定样本频率，再对样本公式求导。参考 q 在每次求导时固定。梯度为正时，梯度下降会减小 p。概率范围限制在 0.05–0.95，以避开零概率边界。</p>
+<noscript><p>交互需要 JavaScript。默认 p = 0.8、q = 0.5 时，reverse KL 梯度为 1.386294，k₁ 为 0，k₂ 为 1.386294，k₃ 为 1.875。</p></noscript></main></body></html>
