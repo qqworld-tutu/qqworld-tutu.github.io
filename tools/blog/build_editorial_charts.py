@@ -45,7 +45,9 @@ def canvas():
     return fig,ax
 
 def save(fig,name):
-    fig.savefig(OUT/(name+'.svg'),bbox_inches='tight',pad_inches=.14,metadata={'Date':None})
+    fig.savefig(OUT/(name+'.svg'),transparent=True,bbox_inches='tight',pad_inches=.14,metadata={'Date':None})
+    svg = OUT/(name+'.svg')
+    svg.write_text(svg.read_text().replace(' \nz\n" style="fill: none', '\nz\n" style="fill: none'))
     plt.close(fig)
 
 x=np.linspace(-9,9,2001);q=np.exp(qlog(x))
